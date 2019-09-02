@@ -36,7 +36,7 @@ export default {
   // proxy,
   // theme,
   history: 'hash',
-  publicPath: '/coty-CRM-new/dist/',
+  publicPath: '/venom-admin/',
   hash: true,
   treeShaking: true,
   plugins: [

@@ -8,7 +8,6 @@ import { Layout, ConfigProvider } from 'antd';
 import HeaderNode from './components/HeaderNode';
 import ContentNode from './components/ContentNode';
 import FooterNode from './components/FooterNode';
-import venomBasicConfig from 'src/venom.config';
 declare var window: any;
 
 interface HeaderLayoutProps extends Basic.BaseProps {}

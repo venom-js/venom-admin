@@ -23,7 +23,7 @@ const FilterTreeSelect: React.FC<FilterTreeSelectProps> = props => {
       value && value.length ? { value, title: props.title } : undefined;
     props.onChange(result);
   };
-  const treeProps: TreeSelectProps = {
+  const treeProps: TreeSelectProps<any> = {
     treeData: props.dataSource,
     labelInValue: true,
     value: props.value,

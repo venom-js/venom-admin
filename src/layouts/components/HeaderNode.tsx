@@ -1,61 +1,55 @@
 /**
  * @name Header布局
  */
-import React, { Fragment } from 'react';
-import { Layout, Icon, Avatar, Button, Popover } from 'antd';
-import Link from 'umi/link';
-import { connect } from 'dva';
-import DvaComponent from 'src/components/basic-component/DvaComponent';
-import { AppModelState } from 'src/models/app';
+import React, { Fragment, useContext } from 'react';
+import { Layout } from 'antd';
 import styles from '../index.less';
-import Title from 'antd/lib/typography/Title';
-import venomBasicConfig from 'src/venom.config';
 import HeaderMenu from './HeaderMenu';
 import TitleNode from './TitleNode';
+import { IndexContext } from '..';
 const { Header } = Layout;
 
-interface HeaderNodeProps extends AppModelState {
-  collapsed?: boolean;
-}
-
-@connect(({ app, user }) => ({
-  ...app,
-  ...user
-}))
-export default class HeaderNode extends DvaComponent<HeaderNodeProps> {
-  namespace = 'app';
-  render() {
-    return (
-      <Header
-        style={{
-          height: venomBasicConfig.headerHeight,
-          background: venomBasicConfig.theme === 'dark' ? '#001529' : '#fff',
-          color: venomBasicConfig.theme === 'dark' ? '#fff' : '#1890ff',
-          position: venomBasicConfig.fixHeader ? 'fixed' : 'static'
-        }}
-        className={`${styles.header}`}
-      >
-        {venomBasicConfig.layout === 'header' &&
-        venomBasicConfig.contentWidth === 'fixed' ? (
-          <div className={styles.wrap}>
-            <HeaderChildren />
-          </div>
-        ) : (
+const HeaderNode: React.FC = props => {
+  const {
+    state: { venomBasicConfig }
+  } = useContext(IndexContext);
+  return (
+    <Header
+      style={{
+        height: +venomBasicConfig.headerHeight,
+        background: venomBasicConfig.headerBg || (venomBasicConfig.theme === 'light' ? '#fff' : '#001529'),
+        color: venomBasicConfig.headerColor || '#1890ff',
+        position: venomBasicConfig.fixHeader ? 'fixed' : 'static'
+      }}
+      className={`${styles.header}`}
+    >
+      {venomBasicConfig.layout === 'header' &&
+      venomBasicConfig.contentWidthMode === 'fixed' ? (
+        <div className={styles.wrap}>
           <HeaderChildren />
-        )}
-      </Header>
-    );
-  }
-}
+        </div>
+      ) : (
+        <HeaderChildren />
+      )}
+    </Header>
+  );
+};
 
-const HeaderChildren: React.FC = props => (
-  <Fragment>
-    {venomBasicConfig.layout === 'header' || venomBasicConfig.fixHeader ? (
-      <TitleNode />
-    ) : (
-      <div />
-    )}
-    {venomBasicConfig.layout === 'header' && <HeaderMenu />}
-    <div className={styles.headerExtra}>Header</div>
-  </Fragment>
-);
+export default HeaderNode;
+
+const HeaderChildren: React.FC = props => {
+  const {
+    state: { venomBasicConfig }
+  } = useContext(IndexContext);
+  return (
+    <Fragment>
+      {venomBasicConfig.layout === 'header' || venomBasicConfig.fixHeader ? (
+        <TitleNode />
+      ) : (
+        <div />
+      )}
+      {venomBasicConfig.layout === 'header' && <HeaderMenu />}
+      <div className={styles.headerExtra}>Header</div>
+    </Fragment>
+  );
+};

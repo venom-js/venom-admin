@@ -24,7 +24,7 @@ export namespace Basic {
     /** dispatch */
     dispatch?: (action: Action) => void;
     /** antd Rc Form实例 */
-    form?: WrappedFormUtils;
+    form?: WrappedFormUtils<T>;
     /** location路由 */
     location?: Location & { query: any };
     /** 其他拓展Props */

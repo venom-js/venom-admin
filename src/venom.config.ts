@@ -1,17 +1,18 @@
-import { VenomBasicConfig } from './types/venom';
+// import { VenomBasicConfig } from './types/venom';
 
-const venomBasicConfig: VenomBasicConfig = {
-  title: 'create venom',
-  headerHeight: 64,
-  siderWidth: 256,
-  contentBg: '#ddd',
-  footerBg: '#fff',
-  theme: 'dark',
-  layout: 'sider',
-  siderMultiple: true,
-  fixHeader: true,
-  fixSider: true,
-  contentWidth: ''
-};
+// const venomBasicConfig: Partial<VenomBasicConfig> = {
+//   title: 'venom admin',
+//   headerHeight: 64,
+//   siderWidth: 256,
+//   contentBg: '#eee',
+//   footerBg: '#fff',
+//   theme: 'dark',
+//   layout: 'sider',
+//   siderMultiple: true,
+//   fixHeader: true,
+//   fixSider: true,
+//   contentWidthMode: '',
+//   headerBg: '#fff'
+// };
 
-export default venomBasicConfig;
+// export default venomBasicConfig;

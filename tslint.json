@@ -97,6 +97,5 @@
       "check-typecast"
     ],
     "object-literal-sort-keys": false,
-    "react-hooks-nesting": "error"
   }
 }

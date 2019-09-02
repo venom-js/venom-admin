@@ -4,18 +4,20 @@
  */
 import React, { useEffect, useRef, useContext } from 'react';
 import { Basic } from 'src/types';
-import { Layout, ConfigProvider } from 'antd';
+import { Layout, ConfigProvider, message, notification } from 'antd';
 import HeaderNode from './components/HeaderNode';
 import ContentNode from './components/ContentNode';
 import FooterNode from './components/FooterNode';
-import SiderMenu from './components/SiderMenu';
 import { IndexContext } from '.';
+import SiderMenu from './components/SiderMenu';
 declare var window: any;
 
-interface SiderLayoutProps extends Basic.BaseProps {}
+interface BasicLayoutProps extends Basic.BaseProps {}
 
-const SiderLayout: React.FC<SiderLayoutProps> = props => {
-  const { state } = useContext(IndexContext);
+const BasicLayout: React.FC<BasicLayoutProps> = props => {
+  const {
+    state: { venomBasicConfig }
+  } = useContext(IndexContext);
   const pathname: string | any = props.location.pathname;
   const popupDom = useRef(null);
   useEffect(() => {
@@ -27,23 +29,34 @@ const SiderLayout: React.FC<SiderLayoutProps> = props => {
   const handleDispatch = payload => {
     window.g_app._store.dispatch(payload);
   };
+  message.config({
+    getContainer: () => popupDom.current
+  });
+  notification.config({
+    getContainer: () => popupDom.current
+  });
   const { children } = props;
+  const isHeaderLayout = venomBasicConfig.layout === 'header';
   return (
     <Layout
-      className={state.venomBasicConfig.fixSider ? 'flex flex-1 h-100p' : 'mh-100p'}
+      className={
+        isHeaderLayout || venomBasicConfig.fixSider
+          ? 'flex flex-1 h-100p'
+          : 'mh-100p'
+      }
     >
-      <SiderMenu />
-      <Layout className="flex h-100p">
-        <HeaderNode />
+      {isHeaderLayout ? <HeaderNode /> : <SiderMenu />}
+      <Layout className="flex">
+        {!isHeaderLayout && <HeaderNode />}
         <ConfigProvider getPopupContainer={() => popupDom.current}>
-          <div ref={popupDom}>
+          <div ref={popupDom} className="h-100p">
             <ContentNode children={children} />
+            <FooterNode />
           </div>
         </ConfigProvider>
-        <FooterNode />
       </Layout>
     </Layout>
   );
 };
 
-export default SiderLayout;
+export default BasicLayout;
