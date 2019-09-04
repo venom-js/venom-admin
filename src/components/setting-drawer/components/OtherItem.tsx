@@ -104,7 +104,6 @@ const OtherItem: React.FC<SettingDrawerChildrenProps> = ({
           <Col>
             <ColorPicker
               onChange={(color: any) => {
-                console.log(color)
                 setIndexState({
                   venomBasicConfig: {
                     ...venomBasicConfig,

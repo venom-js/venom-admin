@@ -96,6 +96,6 @@
       "check-type",
       "check-typecast"
     ],
-    "object-literal-sort-keys": false,
+    "object-literal-sort-keys": false
   }
 }

@@ -27,9 +27,6 @@ const SettingDrawer: React.FC<Props> = props => {
     state: { venomBasicConfig }
   } = useContext(IndexContext);
   const [state, setState] = useStateReducer(getSettingDrawerState());
-  const handleCopy = () => {
-    console.log(venomBasicConfig);
-  };
   return (
     <CommonDrawer
       btnProps={{ className: `${layoutstyles.affixIcon}` }}
