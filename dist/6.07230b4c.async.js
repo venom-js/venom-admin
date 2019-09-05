@@ -1,1 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([[6],{rngu:function(e,t,n){"use strict";n.r(t);var r=n("q1tI"),a=n.n(r),i=e=>{return a.a.createElement("div",{style:{textAlign:"center",height:1e3}},a.a.createElement("h1",{style:{fontSize:60}},"Hello !"))};t["default"]=i}}]);

@@ -41,19 +41,20 @@ export const inputOptions = [
 
 export const colorOptions = [
   {
-    label: '页头背景色',
-    key: 'headerBg'
+    label: 'header背景色',
+    key: 'headerBg',
+    disabled: true
   },
   {
-    label: '页头文字色',
+    label: 'header文字色',
     key: 'headerColor'
   },
   {
-    label: '内容背景色',
+    label: 'content背景色',
     key: 'contentBg'
   },
   {
-    label: '页脚背景色',
+    label: 'footer背景色',
     key: 'footerBg'
   }
 ];

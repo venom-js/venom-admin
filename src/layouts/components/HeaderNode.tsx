@@ -17,7 +17,7 @@ const HeaderNode: React.FC = props => {
     <Header
       style={{
         height: +venomBasicConfig.headerHeight,
-        background: venomBasicConfig.headerBg || (venomBasicConfig.theme === 'light' ? '#fff' : '#001529'),
+        background: venomBasicConfig.layout === 'sider' && venomBasicConfig.headerBg || (venomBasicConfig.theme === 'light' ? '#fff' : '#001529'),
         color: venomBasicConfig.headerColor || '#1890ff',
         position: venomBasicConfig.fixHeader ? 'fixed' : 'static'
       }}

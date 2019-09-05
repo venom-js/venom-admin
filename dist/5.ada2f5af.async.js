@@ -1,1 +1,0 @@
-(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([[5],{umP7:function(n,e,t){"use strict";t.r(e);var a=t("q1tI"),r=t.n(a),u=n=>{return r.a.createElement(a["Fragment"],null,"1")};e["default"]=u}}]);

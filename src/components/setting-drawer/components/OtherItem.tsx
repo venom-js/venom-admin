@@ -103,6 +103,7 @@ const OtherItem: React.FC<SettingDrawerChildrenProps> = ({
           <Col>{item.label}</Col>
           <Col>
             <ColorPicker
+              disabled={item.disabled && isHeaderLayout}
               onChange={(color: any) => {
                 setIndexState({
                   venomBasicConfig: {
